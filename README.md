@@ -1,97 +1,86 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+---
 
-# Getting Started
+## Architecture
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
-
-## Step 1: Start Metro
-
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
-
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+```bash
+/myApp
+  ├── /src
+  │   ├── /assets
+  │   │   ├── /images
+  │   │   └── /icons
+  │   ├── /components
+  │   │   └── /common
+  │   ├── /config
+  │   ├── /constants
+  │   ├── /navigation
+  │   ├── /screens
+  │   ├── /services
+  │   │   ├── api
+  │   │   ├── auth
+  │   │   └── storage
+  │   ├── /store
+  │   ├── /styles
+  │   ├── /utils
+  │   ├── /hooks
+  │   └── /types
+  ├── /node_modules
+  ├── /android
+  ├── /ios
+  ├── /assets
+  ├── /tests
+  ├── App.js
+  ├── package.json
+  ├── .gitignore
+  └── README.md
 ```
 
-## Step 2: Build and run your app
+### /src
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- This folder contains all the application code.
 
-### Android
+### /components
 
-```sh
-# Using npm
-npm run android
+- Contains UI components. Components are organized by functionality.
+  - `/common`: Shared components that can be reused across the app, such as buttons, input fields, etc.
+  - Functional components can be split into specific folders like `/home`, `/profile`, `/settings`.
 
-# OR using Yarn
-yarn android
-```
+### /screens
 
-### iOS
+- Contains components that represent screens/pages of the app. This includes both the logic and UI for each screen.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### /navigation
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+- This folder contains navigation-related code for the app. It typically uses the React Navigation library for routing.
+  - `AppNavigator.ts`: Defines the overall app navigation.
+  - `AuthNavigator.ts`: Handles authentication navigations
+  - `UnAuthNavigator.ts`: Handles unauthentication navigations
 
-```sh
-bundle install
-```
+### /store
 
-Then, and every time you update your native dependencies, run:
+- This folder contains code related to state management
 
-```sh
-bundle exec pod install
-```
+### /services
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+- This folder contains code that interacts with external APIs or handles business logic.
+  - `/api`: Functions to handle API calls.
+  - `/auth`: Functions related to authentication, like login and logout.
+  - `/storage`: Functions for local storage, such as AsyncStorage.
 
-```sh
-# Using npm
-npm run ios
+### /utils
 
-# OR using Yarn
-yarn ios
-```
+- Contains utility functions that can be reused across different parts of the app.
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### /hooks
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+- Contains custom hooks to extract and reuse logic.
+  - ex) `useAuth.ts`, `useTheme.ts`
 
-## Step 3: Modify your app
+### /constants
 
-Now that you have successfully run the app, let's make changes!
+- Contains fixed values and configuration settings.
+  - ex) `colors.ts`, `fontSize.ts`
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### /config
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- Contains configuration files for the app.
+  - ex) `firebase_config.ts`
