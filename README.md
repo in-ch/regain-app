@@ -51,9 +51,9 @@
 ### /navigation
 
 - This folder contains navigation-related code for the app. It typically uses the React Navigation library for routing.
-  - `AppNavigator.ts`: Defines the overall app navigation.
-  - `AuthNavigator.ts`: Handles authentication navigations
-  - `UnAuthNavigator.ts`: Handles unauthentication navigations
+  - `RootNavigator.tsx`: Defines the overall app navigation.
+  - `AppNavigator.tsx`: Handles authentication navigations
+  - `AuthNavigator.tsx`: Handles unauthentication navigations
 
 ### /store
 

@@ -1,15 +1,9 @@
-import messaging from '@react-native-firebase/messaging';
 import React, {useEffect} from 'react';
-import {useColorScheme, View} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {IS_DARK_MODE} from '@constants/enum';
+import {NavigationContainer} from '@react-navigation/native';
+import messaging from '@react-native-firebase/messaging';
+import RootNavigator from '@navigation/RootNavigator';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === IS_DARK_MODE.dark;
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   useEffect(() => {
     // 알림 권한 요청 (iOS 전용)
     const requestPermission = async () => {
@@ -40,7 +34,11 @@ function App(): React.JSX.Element {
     };
   }, []);
 
-  return <View style={backgroundStyle}></View>;
+  return (
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
+  );
 }
 
 export default App;
