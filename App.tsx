@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react';
-import {ScrollView, StatusBar, useColorScheme, View} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import messaging from '@react-native-firebase/messaging';
+import React, {useEffect} from 'react';
+import {useColorScheme, View} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {IS_DARK_MODE} from '@constants/enum';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === IS_DARK_MODE.dark;
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -39,22 +40,7 @@ function App(): React.JSX.Element {
     };
   }, []);
 
-  return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            paddingHorizontal: '5%',
-            paddingBottom: '5%',
-          }}></View>
-      </ScrollView>
-    </View>
-  );
+  return <View style={backgroundStyle}></View>;
 }
 
 export default App;

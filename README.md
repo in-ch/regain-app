@@ -3,7 +3,7 @@
 ## Architecture
 
 ```bash
-/myApp
+/REGAIN
   ├── /src
   │   ├── /assets
   │   │   ├── /images
