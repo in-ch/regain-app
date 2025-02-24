@@ -1,4 +1,4 @@
-package com.regain
+package com.inch.regain
 
 import android.app.Application
 import com.facebook.react.PackageList

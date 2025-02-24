@@ -19,17 +19,20 @@ target 'regain' do
 
   use_react_native!(
     :path => config[:reactNativePath],
-    # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  # Firebase 관련 추가 설정
+  pod 'FirebaseCore', :modular_headers => true
+  pod 'Firebase/Messaging', :modular_headers => true
+  pod 'Firebase/Analytics', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
+
   post_install do |installer|
-    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
       installer,
       config[:reactNativePath],
-      :mac_catalyst_enabled => false,
-      # :ccache_enabled => true
+      :mac_catalyst_enabled => false
     )
   end
 end

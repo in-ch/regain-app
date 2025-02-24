@@ -1,4 +1,4 @@
-package com.regain
+package com.inch.regain
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
